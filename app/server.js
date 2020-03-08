@@ -2,7 +2,7 @@ var express = require('express') //llamamos a Express
 var app = express()
 var bodyParser = require('body-parser')
 
-var port = process.env.PORT || 3000 // establecemos nuestro puerto
+var port = process.env.PORT || 80 // establecemos nuestro puerto
 
 app.use(bodyParser.urlencoded({
     extended: true
