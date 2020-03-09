@@ -1,32 +1,22 @@
 var router = require('express').Router()
+var librosController = require('../controllers/librosController')
+
 router.get('/search', function (req, res) {
-    res.json({
-        message: 'Vas a buscar un libro'
-    })
+    librosController.search(req, res)
 })
 router.get('/', function (req, res) {
-    res.json({
-        message: 'Estás conectado a la API. Recurso: libros'
-    })
+    librosController.list(req, res)
 })
 router.get('/:id', function (req, res) {
-    res.json({
-        message: 'Vas a obtener el libro con id ' + req.params.id
-    })
+    librosController.show(req, res)
 })
 router.post('/', function (req, res) {
-    res.json({
-        message: 'Vas a añadir un libro'
-    })
+    librosController.create(req, res)
 })
 router.put('/:id', function (req, res) {
-    res.json({
-        message: 'Vas a actualizar el libro con id ' + req.params.id
-    })
+    librosController.update(req, res)
 })
 router.delete('/:id', function (req, res) {
-    res.json({
-        message: 'Vas a borrar el libro con id ' + req.params.id
-    })
+    librosController.remove(req, res)
 })
 module.exports = router
