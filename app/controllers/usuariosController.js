@@ -1,109 +1,110 @@
-var Libros = require('../models/libro')
+var Usuarios = require('../models/usuario')
 module.exports = {
     // https://docs.mongodb.com/v3.0/reference/operator/query/text/
     search: function (req, res) {
         var q = req.query.q
-        Libros.find({
+        Usuarios.find({
             $text: {
                 $search: q
             }
-        }, function (err, libros) {
+        }, function (err, usuarios) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error en la búsqueda'
                 })
             }
-            return res.json(libros)
+            return res.json(usuarios)
         })
     },
     list: function (req, res) {
-        Libros.find(function (err, libros) {
+        Usuarios.find(function (err, usuarios) {
             if (err) {
                 return res.status(500).json({
-                    message: 'Error obteniendo el libro'
+                    message: 'Error obteniendo el usuario'
                 })
             }
-            return res.json(libros)
+            return res.json(usuarios)
         })
     },
     show: function (req, res) {
         var id = req.params.id
-        Libros.findOne({
+        Usuarios.findOne({
             _id: id
-        }, function (err, libro) {
+        }, function (err, usuario) {
             if (err) {
                 return res.status(500).json({
-                    message: 'Se ha producido un error al obtener el libro'
+                    message: 'Se ha producido un error al obtener el usuario'
                 })
             }
-            if (!libro) {
+            if (!usuario) {
                 return res.status(404).json({
-                    message: 'No tenemos este libro'
+                    message: 'No tenemos este usuario'
                 })
             }
-            return res.json(libro)
+            return res.json(usuario)
         })
     },
     create: function (req, res) {
-        var libro = new Libros(req.body)
-        libro.save(function (err, libro) {
+        var usuario = new Usuarios(req.body)
+        usuario.save(function (err, usuario) {
             if (err) {
                 return res.status(500).json({
-                    message: 'Error al guardar el libro',
+                    message: 'Error al guardar el usuario',
                     error: err
                 })
             }
             return res.status(201).json({
                 message: 'saved',
-                _id: libro._id
+                _id: usuario._id
             })
         })
     },
     update: function (req, res) {
         var id = req.params.id
-        Libros.findOne({
+        Usuarios.findOne({
             _id: id
-        }, function (err, libro) {
+        }, function (err, usuario) {
             if (err) {
                 return res.status(500).json({
-                    message: 'Se ha producido un error al guardar el libro',
+                    message: 'Se ha producido un error al guardar el usuario',
                     error: err
                 })
             }
-            if (!libro) {
+            if (!usuario) {
                 return res.status(404).json({
-                    message: 'No hemos encontrado el libro'
+                    message: 'No hemos encontrado el usuario'
                 })
             }
-            libro.id = req.body.id
-            libro.autores = req.body.autores
-            libro.isbn = req.body.isbn
-            libro.ejemplares = req.body.ejemplares
-            libro.resumen = req.body.resumen
-            libro.save(function (err, libro) {
+            usuario.id = req.body.id
+            usuario.nombre = req.body.nombre
+            usuario.apellidos = req.body.apellidos
+            usuario.dni = req.body.dni
+            usuario.telefono = req.body.telefono
+            usuario.email = req.body.email
+            usuario.save(function (err, usuario) {
                 if (err) {
                     return res.status(500).json({
-                        message: 'Error al guardar el libro'
+                        message: 'Error al guardar el usuario'
                     })
                 }
-                if (!libro) {
+                if (!usuario) {
                     return res.status(404).json({
-                        message: 'No hemos encontrado el libro'
+                        message: 'No hemos encontrado el usuario'
                     })
                 }
-                return res.json(libro)
+                return res.json(usuario)
             })
         })
     },
     remove: function (req, res) {
         var id = req.params.id
-        Libros.findByIdAndRemove(id, function (err, libro) {
+        Usuarios.findByIdAndRemove(id, function (err, usuario) {
             if (err) {
                 return res.json(500, {
-                    message: 'No hemos encontrado el libro'
+                    message: 'No hemos encontrado el usuario'
                 })
             }
-            return res.json(libro)
+            return res.json(usuario)
         })
     }
 }

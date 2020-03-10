@@ -1,7 +1,13 @@
 //incluimos Mongoose y abrimos una conexión
 var mongoose = require('mongoose')
 var MONGO_URL = process.env.MONGO_URL || 'mongodb://ec2-34-200-85-201.compute-1.amazonaws.com:27017'
-mongoose.connect(MONGO_URL)
+mongoose.connect(MONGO_URL, {
+    dbName: "test",
+    user: "admin",
+    pass: "isabeli_",
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 
 mongoose.connection.on('connected', function () {
     console.log('Conectado a la base de datos: ' + MONGO_URL)
