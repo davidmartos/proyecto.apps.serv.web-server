@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var libroSchema = new Schema({
-    id: Number,
+    _id: Number,
     titulo: String,
     autores: String,
     isbn: String,

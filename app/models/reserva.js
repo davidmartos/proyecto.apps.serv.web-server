@@ -2,14 +2,20 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var reservaSchema = new Schema({
-    id: Number,
-    libro: {
-        type: Schema.Types.ObjectId,
-        ref: 'Libro'
-    },
+    _id: Number,
+    libro: [{
+        titulo: String,
+        autores: String,
+        isbn: String,
+        ejemplares: Number,
+        resumen: String
+    }],
     usuario: {
-        type: Schema.Types.ObjectId,
-        ref: 'Usuario'
+        nombre: String,
+        apellidos: String,
+        dni: String,
+        telefono: String,
+        email: String
     },
     fechaPrestamo: Date,
     fechaDevolucion: Date,
