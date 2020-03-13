@@ -75,7 +75,6 @@ module.exports = {
                     message: 'No hemos encontrado el libro'
                 })
             }
-            libro.id = req.body.id
             libro.autores = req.body.autores
             libro.isbn = req.body.isbn
             libro.ejemplares = req.body.ejemplares
