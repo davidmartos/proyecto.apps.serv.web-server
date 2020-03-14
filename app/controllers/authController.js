@@ -16,6 +16,8 @@ exports.emailLogin = function(req, res) {
                     message: 'Usuario no existe'
                 })
             }
-            return res.json(usuario)
+            return res
+            	.status(200)
+            	.send({token: service.createToken(usuario)})
         })
 };
