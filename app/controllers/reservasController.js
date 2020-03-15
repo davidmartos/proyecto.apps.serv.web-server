@@ -9,21 +9,21 @@ module.exports = {
             }
         }, function (err, reservas) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error en la búsqueda'
                 })
             }
-            return res.json(reservas)
+            return res(reservas)
         })
     },
     list: function (req, res) {
         Reservas.find(function (err, reservas) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error obteniendo la reserva'
                 })
             }
-            return res.json(reservas)
+            return res(reservas)
         })
     },
     show: function (req, res) {
@@ -32,28 +32,28 @@ module.exports = {
             _id: id
         }, function (err, libro) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Se ha producido un error al obtener la reserva'
                 })
             }
             if (!libro) {
-                return res.status(404).json({
+                return res({
                     message: 'No tenemos este libro'
                 })
             }
-            return res.json(libro)
+            return res(libro)
         })
     },
     create: function (req, res) {
         var libro = new Reservas(req.body)
         libro.save(function (err, libro) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error al guardar la reserva',
                     error: err
                 })
             }
-            return res.status(201).json({
+            return res({
                 message: 'saved',
                 _id: libro._id
             })
@@ -65,13 +65,13 @@ module.exports = {
             _id: id
         }, function (err, libro) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Se ha producido un error al guardar la reserva',
                     error: err
                 })
             }
             if (!libro) {
-                return res.status(404).json({
+                return res({
                     message: 'No hemos encontrado la reserva'
                 })
             }
@@ -83,16 +83,16 @@ module.exports = {
             reserva.Estado = req.body.estado
             reserva.save(function (err, libro) {
                 if (err) {
-                    return res.status(500).json({
+                    return res({
                         message: 'Error al guardar la reserva'
                     })
                 }
                 if (!libro) {
-                    return res.status(404).json({
+                    return res({
                         message: 'No hemos encontrado la reserva'
                     })
                 }
-                return res.json(libro)
+                return res(libro)
             })
         })
     },
@@ -100,11 +100,11 @@ module.exports = {
         var id = req.params.id
         Reservas.findByIdAndRemove(id, function (err, libro) {
             if (err) {
-                return res.json(500, {
+                return res({
                     message: 'No hemos encontrado la reserva'
                 })
             }
-            return res.json(libro)
+            return res(libro)
         })
     }
 }
