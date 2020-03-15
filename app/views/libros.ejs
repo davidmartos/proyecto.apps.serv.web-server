@@ -6,7 +6,6 @@
 </head>
  
 <body class="container">
- 
     <header>
         <%- include('partes/header') %>
     </header>
@@ -39,41 +38,15 @@
                     <th>ISBN</th>
                     <th>Ejemplares disponibles</th>
                 </tr>
-                <tr>
-                    <td><span class="colorPrincipal" id="sidi" >SIDI</span></td>
-                    <td>ARTURO PEREZ-REVERTE</td>
-                    <td>ALFAGUARA</td>
-                    <td>9788420435473</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td><span class="colorPrincipal"id="reinaroja" >REINA ROJA</span></td>
-                    <td>JUAN GOMEZ-JURADO</td>
-                    <td>S.A. EDICIONES B</td>
-                    <td>9788466664417</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td><span class="colorPrincipal" id="caranortecorazon">LA CARA NORTE DEL CORAZON</span></td>
-                    <td>DOLORES REDONDO</td>
-                    <td>DESTINO</td>
-                    <td>9788423356355</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td><span class="colorPrincipal" id="terraalta">TERRA ALTA</span></td>
-                    <td>JAVIER CERCAS</td>
-                    <td>PLANETA</td>
-                    <td>9788408217848</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td><span class="colorPrincipal" id="lobanegra">LOBA NEGRA</span></td>
-                    <td>JUAN GOMEZ-JURADO</td>
-                    <td>S.A. EDICIONES B</td>
-                    <td>9788466666497</td>
-                    <td>10</td>
-                </tr>
+                 <% books.forEach(function(book) { %>
+                     <tr>
+                         <td><span class="colorPrincipal" id="sidi" ><%= book.titulo %></span></td>
+                         <td><%= book.autores %></td>
+                         <td><%= book.editorial %></td>
+                         <td><%= book.isbn %></td>
+                         <td><%= book.ejemplares %></td>
+                     </tr>
+                 <% }); %>
             </tbody>
         </table>
         <!-- Modal Trigger -->
