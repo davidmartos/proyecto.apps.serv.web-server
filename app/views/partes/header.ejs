@@ -1,0 +1,45 @@
+
+<!-- views/partes/header.ejs -->
+<nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <!-- Navigation Bar -->
+            <a id="logo-container" href="https://www.ui1.es/" class="brand-logo center">
+                <img src="/img/logo_ui1.png" alt="logo ui1" />
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="/front" id="home">Home</a></li>
+                <li><a href="/front/libros" id="libros">Libros</a></li>
+                <li><a href="/front/prestamos" id="prestamos">Préstamos</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a id="decrease">A</a></li>
+                <li><a id="increase">A</a></li>
+                <li>
+                    <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                            Rosa
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Gris
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <a class="linkLogin colorPrincipal" href="/front/login">LOGIN</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Navigation Bar -->
+            <ul id="nav-mobile" class="sidenav">
+                <li><a id="home-mob">Home</a></li>
+                <li><a id="libros-mob">Libros</a></li>
+                <li><a id="prestamos-mob">Préstamos</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+
+
+        </div>
+    </nav>

@@ -3,6 +3,7 @@ var Usuarios = require('../models/usuario')
 var service = require('../services/service');
 
 exports.emailLogin = function(req, res) {
+    
     Usuarios.findOne({
             email: req.body.email.toLowerCase()
         }, function (err, usuario) {

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <%- include('partes/head') %>
+</head>
+ 
+<body class="container">
+ 
+    <header>
+        <%- include('partes/header') %>
+    </header>
+ 
+    <main>
+       <div id="main-content" class="container">
+        <div class="fichaTecnica">
+            <h3>Ficha técnica</h3>
+            <ul>
+                <li><b>Título:</b> SIDI</li>
+                <li><b>Resumen:</b> La nueva novela de Arturo Pérez-Reverte. No tenía patria ni rey, sólo un puñado de hombres fieles. No tenían hambre de gloria, sólo hambre. Así nace un mito. Así se cuenta una leyenda. «El arte del mando era tratar con la naturaleza humana, y él había dedicado su vida a aprenderlo. Colgó la espada del arzón, palmeó el cuello cálido del animal y echó un vistazo alrededor: sonidos metálicos, resollar de monturas, conversaciones en voz baja. Aquellos hombres olían a estiércol de caballo, cuero, aceite de armas, sudor y humo de leña.» en las formas, extraordinariamente complejos en instintos e intuiciones, eran guerreros y nunca habían pretendido ser otra cosa. Resignados ante el azar, fatalistas sobre la vida y la muerte, obedecían de modo natural sin que la imaginación les jugara malas pasadas. Rostros curtidos de viento, frío y sol, arrugas en torno a los ojos incluso entre los más jóvenes, manos encallecidas de empuñar armas y pelear. Jinetes que se persignaban antes de entrar en combate y vendían su vida o muerte por ganarse el pan. Profesionales de la frontera, sabían luchar con crueldad y morir con sencillez.» No eran malos hombres, concluyó. Ni tampoco ajenos a la compasión. Sólo gente dura en un mundo duro.»«En él se funden de un modo fascinante la aventura, la historia y la leyenda. Hay muchos Cid en la tradición española, y éste es el mío.»</li>
+                <li><b>Editorial:</b> ALFAGUARA</li>
+                <li><b>ISBN:</b> 9788420435473</li>
+                <li><b>Autores:</b>
+                    <ul>
+                        <li>ARTURO PEREZ-REVERTE</li>
+                    </ul>
+                </li>
+                <li><b>Imagen de portada:</b><br>
+                    <img src="/img/covers/sidi.jpg" alt="Portada libro SIDI" />
+                </li>
+            </ul>
+        </div>
+        <table id="book-table">
+            <tbody>
+                <tr>
+                    <th>Título</th>
+                    <th>Autores</th>
+                    <th>Editorial</th>
+                    <th>ISBN</th>
+                    <th>Ejemplares disponibles</th>
+                </tr>
+                <tr>
+                    <td><span class="colorPrincipal" id="sidi" >SIDI</span></td>
+                    <td>ARTURO PEREZ-REVERTE</td>
+                    <td>ALFAGUARA</td>
+                    <td>9788420435473</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><span class="colorPrincipal"id="reinaroja" >REINA ROJA</span></td>
+                    <td>JUAN GOMEZ-JURADO</td>
+                    <td>S.A. EDICIONES B</td>
+                    <td>9788466664417</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><span class="colorPrincipal" id="caranortecorazon">LA CARA NORTE DEL CORAZON</span></td>
+                    <td>DOLORES REDONDO</td>
+                    <td>DESTINO</td>
+                    <td>9788423356355</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><span class="colorPrincipal" id="terraalta">TERRA ALTA</span></td>
+                    <td>JAVIER CERCAS</td>
+                    <td>PLANETA</td>
+                    <td>9788408217848</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><span class="colorPrincipal" id="lobanegra">LOBA NEGRA</span></td>
+                    <td>JUAN GOMEZ-JURADO</td>
+                    <td>S.A. EDICIONES B</td>
+                    <td>9788466666497</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Modal Trigger -->
+        <a class="btn-floating btn-large waves-effect waves-light modal-trigger" href="#demo-modal">
+            <i class="material-icons">add</i>
+        </a>
+        
+        <!-- Modal Structure -->
+        <div id="demo-modal" class="modal">
+            <div class="modal-content">
+                <form class="col s12" id="add-book">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Título" id="title" type="text" class="validate" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Autor" id="author" type="text" class="validate" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Editorial" id="editorial" type="text" class="validate" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="ISBN" id="isbn" type="text" class="validate" required>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Cantidad disponible" id="available" type="text" class="validate" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a class="modal-action modal-close waves-effect waves btn">Cancelar</a>
+                        <button class="waves-effect waves btn" type="submit" id="submit" name="action">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            jQuery(document).ready(function() {
+                function cargarDatosFichaTecnica(libro){
+                    // hacer llamada con ajax para cargar los datos
+                    $(".fichaTecnica").show();
+                };
+
+                $(".fichaTecnica").click(function(event){
+                    $(".fichaTecnica").hide();
+                });
+                $('.modal').modal();
+                $("form").submit(function(event) {
+                    event.preventDefault();
+                    var title = $("#title").val();
+                    var author = $("#author").val();
+                    var editorial = $("#editorial").val();
+                    var isbn = $("#isbn").val();
+                    var available = $("#available").val();
+                    var markup = "<tr><td><a id=\"libro-" + isbn + "\">" + title + "</a></td><td>" + author + "</td> <td>" + editorial + "</td> <td>" + isbn + "</td><td>" + available + "</td></tr>";
+                    $("table tbody").append(markup);
+                    $('#demo-modal').modal('close');
+                    $(this).find("input[type=text]").val("");
+                });
+        
+        
+                $("#sidi").click(function(event) {
+                    event.preventDefault();
+                    cargarDatosFichaTecnica("sidi");
+                });
+                $("#reinaroja").click(function(event) {
+                    event.preventDefault();
+                    cargarDatosFichaTecnica("reinaroja");
+                });
+                $("#caranortecorazon").click(function(event) {
+                    event.preventDefault();
+                    cargarDatosFichaTecnica("caranortecorazon");
+                });
+                $("#terraalta").click(function(event) {
+                    event.preventDefault();
+                    cargarDatosFichaTecnica("terraalta");
+                });
+                $("#lobanegra").click(function(event) {
+                    event.preventDefault();
+                    cargarDatosFichaTecnica("lobanegra");
+                });
+        
+        
+            })
+        
+        </script>
+        
+        </div>
+    </main>
+ 
+    <footer>
+        <%- include('partes/footer') %>
+    </footer>
+ 
+</body>
+ 
+</html>

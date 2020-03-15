@@ -1,0 +1,106 @@
+/* Custom Stylesheet */
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1rem;
+}
+
+nav ul a,
+nav {
+    color: #E4004F;
+}
+.colorPrincipal{
+    color: #E4004F;   
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    color: #E4004F;
+}
+
+p {
+    line-height: 1.8rem;
+}
+
+.sidenav-trigger {
+    color: #E4004F;
+}
+
+.btn,
+.btn-floating,
+.modal-footer a {
+    background-color: #E4004F;
+}
+
+.btn:hover,
+.btn-floating:hover,
+.modal-footer a:hover {
+    background-color: #38414A;
+}
+
+@media only screen and (max-width : 992px) {
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+    padding-top: 0;
+    background-color: #E4004F;
+}
+
+#main-content {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#increase {
+    font-size: 1.2rem;
+}
+
+#decrease {
+    font-size: 0.7rem;
+}
+
+.btn-floating {
+    margin-top: 2%;
+}
+.fichaTecnica{
+    position: absolute;
+    display:none;
+    z-index:2;
+    width:600px;
+    padding:40px;
+    background:#fff;
+    border:2px solid #E4004F;
+}
+.linkLogin{
+    padding-left:10px;
+}
+.tdLogin{
+    text-align:center;
+}
+.tdLogin input{
+    width:200px;
+    height:40px;
+    background:#E4004F;
+    color:#fff;
+}
