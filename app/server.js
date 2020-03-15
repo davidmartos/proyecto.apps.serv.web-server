@@ -7,19 +7,19 @@ var routerFront = require('./routes/front')
 var app = express()
 var port = process.env.PORT || 3000 // establecemos nuestro puerto
 
+require('./db') // configuración de base de datos
+
 app.set('views','./views/'); // establecemos la ruta de las plantillas de las vistas
 app.set('view engine', 'ejs');
-app.use(express.static('./public')); // asignamos la carperta que contendra los ficheros estaticos js css img
-
-/*toda la configuración de bbdd la hacemos en un fichero a parte*/
-require('./db')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', routerApi)
 app.use('/auth', routerAuth)
-app.use('/front', routerFront)
+app.use('/', routerFront)
+app.use(express.static('./public')); // asignamos la carperta que contendra los ficheros estaticos js css img
+
 //arrancamos el servidor
 app.listen(port, () => {
     console.log('API escuchando en el puerto ' + port)

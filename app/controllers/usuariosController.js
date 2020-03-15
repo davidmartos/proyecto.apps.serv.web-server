@@ -9,21 +9,21 @@ module.exports = {
             }
         }, function(err, usuarios) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error en la búsqueda'
                 })
             }
-            return res.json(usuarios)
+            return res(usuarios)
         })
     },
     list: function(req, res) {
         Usuarios.find(function(err, usuarios) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error obteniendo el usuario'
                 })
             }
-            return res.json(usuarios)
+            return res(usuarios)
         })
     },
     show: function(req, res) {
@@ -32,28 +32,28 @@ module.exports = {
             _id: id
         }, function(err, usuario) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Se ha producido un error al obtener el usuario'
                 })
             }
             if (!usuario) {
-                return res.status(404).json({
+                return res({
                     message: 'No tenemos este usuario'
                 })
             }
-            return res.json(usuario)
+            return res(usuario)
         })
     },
     create: function(req, res) {
         var usuario = new Usuarios(req.body)
         usuario.save(function(err, usuario) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Error al guardar el usuario',
                     error: err
                 })
             }
-            return res.status(201).json({
+            return res({
                 message: 'saved',
                 _id: usuario._id
             })
@@ -65,13 +65,13 @@ module.exports = {
             _id: id
         }, function(err, usuario) {
             if (err) {
-                return res.status(500).json({
+                return res({
                     message: 'Se ha producido un error al guardar el usuario',
                     error: err
                 })
             }
             if (!usuario) {
-                return res.status(404).json({
+                return res({
                     message: 'No hemos encontrado el usuario'
                 })
             }
@@ -83,16 +83,16 @@ module.exports = {
             usuario.email = req.body.email
             usuario.save(function(err, usuario) {
                 if (err) {
-                    return res.status(500).json({
+                    return res({
                         message: 'Error al guardar el usuario'
                     })
                 }
                 if (!usuario) {
-                    return res.status(404).json({
+                    return res({
                         message: 'No hemos encontrado el usuario'
                     })
                 }
-                return res.json(usuario)
+                return res(usuario)
             })
         })
     },
@@ -100,11 +100,11 @@ module.exports = {
         var id = req.params.id
         Usuarios.findByIdAndRemove(id, function(err, usuario) {
             if (err) {
-                return res.json(500, {
+                return res({
                     message: 'No hemos encontrado el usuario'
                 })
             }
-            return res.json(usuario)
+            return res(usuario)
         })
     }
 }
